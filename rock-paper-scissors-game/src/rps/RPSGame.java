@@ -10,16 +10,12 @@ _____________________________________________________________________
 
 package rps;
 
-import java.util.Scanner;
-
 public class RPSGame {
 	/**
 	 * Mini-game: A human plays rock-paper-scissors against the computer. Keeps
 	 * going until the player asks to exit, then shows the scores.
 	 */
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		
 		RPSPlayer human = new RPSPlayer();
 		RPSPlayer computer = new RPSPlayer();
 		
@@ -30,7 +26,7 @@ public class RPSGame {
 			{
 				System.out.println("[pi]erre, [pa]pier, [ci]seaux?");
 				try {
-					human.setHand(sc.nextLine());
+					human.setHand(Clavier.lireString());
 					break;
 				} catch (IllegalArgumentException e)
 				{
@@ -43,15 +39,13 @@ public class RPSGame {
 							 + computer.getHandString() + ". " 			// Computer's hand.
 							 + human.getLastOutcome() + "!\n" 			// Round outcome.
 							 + "Voulez-vous rejouer [o]ui/[n]on) ?"); 	// Play again?
-		} while (sc.nextLine().toLowerCase().startsWith("o"));			// Stop on any input not starting with "o"
+		} while (Clavier.lireString().startsWith("o"));			// Stop on any input not starting with "o"
 		
 		// Calculate win %, rounded to the nearest whole number.
 		long winPercentage = Math.round(100 * (double) human.getScore() / (human.getScore() + computer.getScore()));
 		
 		// Show scores and win percentage.
 		System.out.println(human.getScore() + " jeux gagnés contre " + computer.getScore() + " perdus (" 
-				+ winPercentage + "% de pourcentage de victoires)."); 	
-		
-		sc.close();
+				+ winPercentage + "% de pourcentage de victoires)."); 
 	}
 }
