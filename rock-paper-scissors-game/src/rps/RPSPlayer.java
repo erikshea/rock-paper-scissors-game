@@ -4,7 +4,7 @@ public class RPSPlayer {
 	private int score; 	// Current score, starts at 0 and increments with each win
 	private int hand; 	// Current hand shape, in the form of a number between 1 and 3
 	private String lastOutcome;	// Last game outcome, eg. "Gagné".
-
+	
 	public RPSPlayer() {
 		this.score = 0; // TODO: see if can get rid of
 	}
@@ -69,7 +69,7 @@ public class RPSPlayer {
 	}
 
 
-	/** SETTERS **/
+	/***** Setters *****/
 
 	public int getHand() {
 		return this.hand;
