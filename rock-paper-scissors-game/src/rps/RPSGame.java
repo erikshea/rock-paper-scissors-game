@@ -16,28 +16,28 @@ public class RPSGame {
 	 * going until the player asks to exit, then shows the scores.
 	 */
 	public static void main(String[] args) {
-		RPSPlayer human = new RPSPlayer();
-		RPSPlayer computer = new RPSPlayer();
+		RPSPlayer human = new RPSPlayer();		// Create human player;
+		RPSPlayer computer = new RPSPlayer();	// Create computer player;
 		
 		do {
-			computer.setRandomHand(); // Computer picks a random hand.
-			
+			computer.setHand( (int) ( 3 * Math.random() + 1 ) ); // Computer picks a random hand (1 to 3).
+
 			while(true)	// Keeps asking for a hand shape as long as input is invalid
 			{
 				System.out.println("[pi]erre, [pa]pier, [ci]seaux?");
 				try {
 					human.setHand(Clavier.lireString());	// Read human player's hand.
-					break;									// Break while loop if no exception
+					break;									// Break infinite loop if no exception
 				} catch (IllegalArgumentException e)
 				{
 					System.out.println("Choix invalide.");
 				}
 			}
 
-			human.play(computer);
+			
 			System.out.print("Choix de votre adversaire : "
-							 + computer.getHandString() + ". " 			// Computer's hand.
-							 + human.getLastOutcome() + "!\n" 			// Round outcome.
+							 + computer.getHandName() + ". " 			// Computer's current hand.
+							 + human.getOutcome(computer) + "!\n" 		// Round outcome for current hands.
 							 + "Voulez-vous rejouer [o]ui/[n]on) ?"); 	// Play again?
 		} while (Clavier.lireString().startsWith("o"));			// Stop on any input not starting with "o"
 		
