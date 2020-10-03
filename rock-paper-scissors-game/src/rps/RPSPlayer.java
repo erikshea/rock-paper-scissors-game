@@ -1,5 +1,9 @@
 package rps;
 
+/**
+ * Represents a player for the game rock-paper-scissors.
+ * Players can play against each other, and their scores are saved.
+ */
 public class RPSPlayer {
 	private int score = 0; 	// Current score, starts at 0 and increments with each win
 	private int hand; 		// Current hand shape, in the form of a number between 1 and 3
@@ -10,7 +14,7 @@ public class RPSPlayer {
 	 * @param RPSPlayer we play against
 	 * @return String outcome, eg "Gagné"
 	 */
-	public String getOutcome(RPSPlayer opponent) {
+	public String getOutcomeAgainst(RPSPlayer opponent) {
 		String outcome;
 		
 		if (this.hand == opponent.getHand())					// Draw.
@@ -38,11 +42,11 @@ public class RPSPlayer {
 	 * @param opponentHand hand number of opponent
 	 * @return String outcome, eg "Gagné"
 	 */
-	public String getOutcomeForHands(RPSPlayer opponent, int myHand, int opponentHand)
+	public String getOutcomeAgainstForHands(RPSPlayer opponent, int myHand, int opponentHand)
 	{
 		this.setHand(myHand);
 		opponent.setHand(opponentHand);
-		return this.getOutcome(opponent);
+		return this.getOutcomeAgainst(opponent);
 	}
 
 	/**
