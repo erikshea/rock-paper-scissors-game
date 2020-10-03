@@ -51,33 +51,34 @@ public class RPSGameTest extends RPSGame {
 	}
 
 	/**
-	 * Check that setting hand by String assigns the correct number to the hand
+	 * Check that setting hand by name assigns the correct number to the hand
 	 * property
 	 */
 	@Test
 	public void setHand_shouldSetCorrectHandNumber() {
 		RPSPlayer player = new RPSPlayer();
 
-		player.setHand("pierre");
+		player.setHandByName("pierre");
 		assertEquals(player.getHand(), 1);
 
-		player.setHand("papier");
+		player.setHandByName("papier");
 		assertEquals(player.getHand(), 2);
 
-		player.setHand("ciseaux");
+		player.setHandByName("ciseaux");
 		assertEquals(player.getHand(), 3);
 
 		// Check that only the first two letters are needed, ignoring capitalization
-		player.setHand("pIsdfklm");
+		player.setHandByName("pIsdfklm");
 		assertEquals(player.getHand(), 1);
 
-		player.setHand("pAsqkmf");
+		player.setHandByName("pAsqkmf");
 		assertEquals(player.getHand(), 2);
 
-		player.setHand("cIdqsqsdqsd");
+		player.setHandByName("cIdqsqsdqsd");
 		assertEquals(player.getHand(), 3);
 	}
 
+	
 	/*** Argument validation ***/
 	
 	/**
@@ -100,7 +101,7 @@ public class RPSGameTest extends RPSGame {
 		} catch (IllegalArgumentException e) {
 		}
 		try {
-			player.setHand(-27);
+			player.setHand(-2);
 			fail(failMessage);
 		} catch (IllegalArgumentException e) {
 		}
@@ -116,17 +117,17 @@ public class RPSGameTest extends RPSGame {
 		String failMessage = "setHand failed to throw IllegalArgumentException on invalid int input";
 		
 		try {
-			player.setHand("");
+			player.setHandByName("");
 			fail(failMessage);
 		} catch (IllegalArgumentException e) {
 		}
 		try {
-			player.setHand("dsfSQFdfdfdsfdf");
+			player.setHandByName("dsfSQFdfdfdsfdf");
 			fail(failMessage);
 		} catch (IllegalArgumentException e) {
 		}
 		try {
-			player.setHand("---------");
+			player.setHandByName("---------");
 			fail(failMessage);
 		} catch (IllegalArgumentException e) {
 		}

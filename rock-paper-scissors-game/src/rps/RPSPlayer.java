@@ -74,7 +74,7 @@ public class RPSPlayer {
 	 * @param handString name of hand, eg. "pierre"
 	 * @throws IllegalArgumentException if name isn't a valid hand name
 	 */
-	public void setHand(String handString) throws IllegalArgumentException {
+	public void setHandByName(String handString) throws IllegalArgumentException {
 		handString = handString.toLowerCase();	// Ignore capitalization
 
 		if (handString.startsWith("pi")) {
@@ -94,7 +94,7 @@ public class RPSPlayer {
 	 * @throws IllegalArgumentException if invalid hand number
 	 */
 	public void setHand(int number) throws IllegalArgumentException {
-		if ( 1 <= number && number <= 3)	// Make sure number isn't between 1 and 3 inclusive
+		if ( 1 <= number && number <= 3)	// Make sure is between 1 and 3 inclusive
 		{
 			this.hand = number;
 		} else {							// Throw exception if it isn't

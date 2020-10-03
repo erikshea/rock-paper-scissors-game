@@ -25,7 +25,7 @@ public class RPSGame {
 			{
 				System.out.println("[pi]erre, [pa]pier, [ci]seaux?");
 				try {
-					human.setHand(Clavier.lireString());	// Read human player's hand.
+					human.setHandByName(Clavier.lireString());	// Read human player's hand.
 					break;									// Break infinite loop if no exception
 				} catch (IllegalArgumentException e)
 				{
@@ -42,7 +42,7 @@ public class RPSGame {
 		// Calculate win %, rounded to the nearest whole number.
 		long winPercentage = Math.round(100 * (double) human.getScore() / (human.getScore() + computer.getScore()));
 		
-		// Show scores and win percentage.
+		// Show score and win percentage.
 		System.out.println(human.getScore() + " jeux gagnés contre " + computer.getScore() + " perdus (" 
 							+ winPercentage + "% de pourcentage de victoires)."); 
 	}
