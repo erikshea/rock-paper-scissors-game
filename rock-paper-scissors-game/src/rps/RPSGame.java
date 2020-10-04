@@ -21,12 +21,12 @@ public class RPSGame {
 		do {
 			computer.setHand( (int) ( 3 * Math.random() + 1 ) ); // Computer picks a random hand (1 to 3).
 
-			while(true)	// Keep asking for a hand shape as long as input is invalid
+			while(true)		// Keep asking for a hand shape as long as input is invalid
 			{
 				System.out.println("[pi]erre, [pa]pier, [ci]seaux?");
 				try {
 					human.setHandByName(Clavier.lireString());	// Read human player's hand.
-					break;									// Break infinite loop if no exception
+					break;	// Break infinite loop if no exception
 				} catch (IllegalArgumentException e)
 				{
 					System.out.println("Choix invalide.");

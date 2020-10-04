@@ -28,7 +28,7 @@ public class RPSPlayer {
 			this.score++;		// Increment score
 		} else 													// Loss otherwise
 		{
-			outcome="Perdu";
+			outcome = "Perdu";
 			opponent.score++;	// Increment opponent score
 		}
 		
@@ -50,9 +50,9 @@ public class RPSPlayer {
 	}
 
 	/**
-	 * Returns string corresponding to current hand 
+	 * Returns string corresponding to current hand property 
 	 * 
-	 * @return String hand in string form (eg. 1 returns "pierre").
+	 * @return String hand name (eg. 1 returns "pierre").
 	 */
 	public String getHandName()
 	{
@@ -62,7 +62,7 @@ public class RPSPlayer {
 			handString = "pierre";
 		} else if (this.hand == 2) {
 			handString = "papier";
-		} else {
+		} else {						// Only possibility left because setters validate this.hand
 			handString = "ciseaux";
 		}
 
@@ -70,14 +70,15 @@ public class RPSPlayer {
 	}
 	
 	/**
-	 * Set hand number from passed hand name. Only looks at the first two letters.
+	 * Set hand number from passed hand name, making sure it's valid.
+	 * Only looks at the first two letters.
 	 * @param handString name of hand, eg. "pierre"
 	 * @throws IllegalArgumentException if name isn't a valid hand name
 	 */
 	public void setHandByName(String handString) throws IllegalArgumentException {
 		handString = handString.toLowerCase();	// Ignore capitalization
 
-		if (handString.startsWith("pi")) {
+		if (handString.startsWith("pi")) {		// Look at the first two letters
 			this.hand = 1;
 		} else if (handString.startsWith("pa")) {
 			this.hand = 2;
@@ -89,15 +90,15 @@ public class RPSPlayer {
 	}
 	
 	/**
-	 * Sets hand property to passed int
+	 * Sets hand property from passed hand number, making sure it's valid.
 	 * @param number hand number
 	 * @throws IllegalArgumentException if invalid hand number
 	 */
 	public void setHand(int number) throws IllegalArgumentException {
-		if ( 1 <= number && number <= 3)	// Make sure is between 1 and 3 inclusive
+		if ( 1 <= number && number <= 3)	// Make sure number is between 1 and 3 inclusive
 		{
 			this.hand = number;
-		} else {							// Throw exception if it isn't
+		} else {							// If it isn't, invalid parameter.
 			throw new IllegalArgumentException("Numéro de main invalide: " + number);
 		}
 	}
