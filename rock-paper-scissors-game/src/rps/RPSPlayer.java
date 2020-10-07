@@ -36,7 +36,7 @@ public class RPSPlayer {
 	}
 
 	/**
-	 * Get game outcome, specifying the hand numbers of both opponents
+	 * Get game outcome, specifying the hand numbers of both opponents.
 	 * @param RPSPlayer we play against
 	 * @param myHand hand number of current instance
 	 * @param opponentHand hand number of opponent
@@ -44,8 +44,8 @@ public class RPSPlayer {
 	 */
 	public String getOutcomeAgainstForHands(RPSPlayer opponent, int myHand, int opponentHand)
 	{
-		this.setHand(myHand);
-		opponent.setHand(opponentHand);
+		this.setHand(myHand);			// Use setters for argument validation.
+		opponent.setHand(opponentHand);	//
 		return this.getOutcomeAgainst(opponent);
 	}
 

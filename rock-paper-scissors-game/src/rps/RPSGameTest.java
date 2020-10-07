@@ -11,26 +11,26 @@ public class RPSGameTest extends RPSGame {
 	 */
 	@Test
 	public void getOutcomeForHands_shouldGiveCorrectOutcomeAndUpdateScores() {
-		RPSPlayer player1 = new RPSPlayer();
-		RPSPlayer player2 = new RPSPlayer();
+		RPSPlayer player1 = new RPSPlayer();	// Create player instances.
+		RPSPlayer player2 = new RPSPlayer();	//
 
 		assertEquals("Match nul", player1.getOutcomeAgainstForHands(player2, 1, 1));
 		assertEquals("Match nul", player1.getOutcomeAgainstForHands(player2, 2, 2));
 		assertEquals("Match nul", player1.getOutcomeAgainstForHands(player2, 3, 3));
-		assertEquals(player1.getScore(), 0);
-		assertEquals(player2.getScore(), 0);
+		assertEquals(player1.getScore(), 0);	// So far, no one won.
+		assertEquals(player2.getScore(), 0);	//
 
 		assertEquals("Gagné", player1.getOutcomeAgainstForHands(player2, 1, 3));
 		assertEquals("Gagné", player1.getOutcomeAgainstForHands(player2, 2, 1));
 		assertEquals("Gagné", player1.getOutcomeAgainstForHands(player2, 3, 2));
-		assertEquals(player1.getScore(), 3);
+		assertEquals(player1.getScore(), 3);	// 3 wins in a row for player 1
 		assertEquals(player2.getScore(), 0);
 
 		assertEquals("Perdu", player1.getOutcomeAgainstForHands(player2, 3, 1));
 		assertEquals("Perdu", player1.getOutcomeAgainstForHands(player2, 1, 2));
 		assertEquals("Perdu", player1.getOutcomeAgainstForHands(player2, 1, 2));
 		assertEquals(player1.getScore(), 3);
-		assertEquals(player2.getScore(), 3);
+		assertEquals(player2.getScore(), 3);	// 3 wins in a row for player 2
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class RPSGameTest extends RPSGame {
 	 * property
 	 */
 	@Test
-	public void setHand_shouldSetCorrectHandNumber() {
+	public void setHandByName_shouldSetCorrectHandNumber() {
 		RPSPlayer player = new RPSPlayer();
 
 		player.setHandByName("pierre");
@@ -88,7 +88,7 @@ public class RPSGameTest extends RPSGame {
 	@Test
 	public void setHand_shouldThrowIllegalArgumentException_WhenIntArgumentOutOfBounds() {
 		RPSPlayer player = new RPSPlayer();
-		String failMessage = "setHand failed to throw IllegalArgumentException on invalid int input";
+		String failMessage = "setHandByName failed to throw IllegalArgumentException on invalid int input";
 		
 		try {
 			player.setHand(4);
@@ -112,9 +112,9 @@ public class RPSGameTest extends RPSGame {
 	 * of one of the valid hands throws IllegalArgumentException
 	 */
 	@Test
-	public void setHand_shouldThrowIllegalArgumentException_WhenStringArgumentInvalid() {
+	public void setHandByName_shouldThrowIllegalArgumentException_WhenStringArgumentInvalid() {
 		RPSPlayer player = new RPSPlayer();
-		String failMessage = "setHand failed to throw IllegalArgumentException on invalid int input";
+		String failMessage = "setHand failed to throw IllegalArgumentException on invalid string input";
 		
 		try {
 			player.setHandByName("");
